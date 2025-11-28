@@ -1,2 +1,3 @@
 # LeetcodeDSA
-Leetcode solution
+Leetcode solutions
+
