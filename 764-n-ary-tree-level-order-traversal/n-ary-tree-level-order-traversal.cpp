@@ -1,23 +1,25 @@
 class Solution {
 public:
     vector<vector<int>> levelOrder(Node* root) {
-        vector<vector<int>> finalAns;
-        if(root == nullptr) return finalAns;
+        vector<vector<int>> ans;
+        if(root==NULL){
+            return ans;
+        }
         queue<Node*> q;
         q.push(root);
         while(!q.empty()){
-            int size = q.size();
-            vector<int> ans;
-            for(int i = 0; i < size; i++){
-                Node* curr = q.front();   
+            vector<int> list;
+            int size=q.size();
+            while(size--){
+                Node* f=q.front();
                 q.pop();
-                ans.push_back(curr->val);  
-                for(Node* child : curr->children){
-                    if(child != nullptr) q.push(child);
+                list.push_back(f->val);
+                for(Node* child:f->children){
+                    q.push(child);
                 }
             }
-            finalAns.push_back(ans);
+            ans.push_back(list);
         }
-        return finalAns;
+        return ans;
     }
 };
