@@ -31,6 +31,5 @@ public:
         for(Node* child:root->children){
             solve(child,ans);
         }
-
     }
 };
