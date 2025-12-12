@@ -28,7 +28,7 @@ public:
     void solve(Node* root,vector<int> &ans){
         if(root==nullptr) return;
         ans.push_back(root->val);
-        for(Node* child:root->children){
+        for(auto child:root->children){
             solve(child,ans);
         }
     }
