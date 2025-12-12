@@ -28,8 +28,6 @@ public:
     void solve(Node* root,vector<int> &ans){
         if(root==nullptr) return;
         ans.push_back(root->val);
-        for(auto child:root->children){
-            solve(child,ans);
-        }
+        for(auto child:root->children) solve(child,ans);
     }
 };
