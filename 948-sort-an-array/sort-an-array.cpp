@@ -11,6 +11,5 @@ public:
             pq.pop();
         }
         return ans;
-        
     }
 };
