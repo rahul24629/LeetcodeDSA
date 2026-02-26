@@ -3,7 +3,6 @@ public:
     bool isMatch(string s, string p) {
         int n = s.size();
         int m = p.size();
-
         vector<vector<bool>> dp(n+1, vector<bool>(m+1,false));
 
         dp[0][0] = true;
@@ -22,13 +21,9 @@ public:
                     dp[i][j] = dp[i-1][j-1];
                 }
                 else if(p[j-1] == '*'){
-
-                    // 0 occurrence
                     dp[i][j] = dp[i][j-2];
-
-                    // 1 or more occurrence
                     if(s[i-1] == p[j-2] || p[j-2] == '.'){
-                        dp[i][j] = dp[i][j] || dp[i-1][j];
+                        dp[i][j] = dp[i][j-2] || dp[i-1][j];
                     }
                 }
             }
