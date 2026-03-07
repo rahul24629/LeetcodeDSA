@@ -22,18 +22,18 @@ public:
         }
 
         //bottom
-        if(srow<erow){
+        if(srow==erow) break;
         for(int j=ecol-1;j>=scol;j--){
             ans.push_back(matrix[erow][j]);
         }
-        }
+        
 
         //left
-        if(scol<ecol){
+        if(scol==ecol) break;
         for(int i=erow-1;i>=srow+1;i--){
             ans.push_back(matrix[i][scol]);
         }
-        }
+        
 
         srow++;scol++;
         erow--;ecol--;
