@@ -1,16 +1,52 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
-        int n=nums.size();
-        unordered_map<int,int> m; //arr[i],freq
-        for(int i=0;i<n;i++){
-            if(m.count(nums[i])) m[nums[i]]++;
-            else m[nums[i]]=1;
+        int count1=0;
+        int el1=0;
+
+        int count2=0;
+        int el2=0;
+
+        for(int i=0;i<nums.size();i++){
+            if(count1==0 && nums[i]!=el2){
+                count1=1;
+                el1=nums[i];
+            }else if(count2==0 && nums[i]!=el1){
+                count2=1;
+                el2=nums[i];
+            }else if(nums[i]==el1){
+                count1++;
+            }else if(nums[i]==el2){
+                count2++;
+            }else{
+                count1--;
+                count2--;
+            }
         }
+
+        //manuel check
+        count1=0;
+        count2=0;
+
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==el1){
+                count1++;
+            }else if(nums[i]==el2){
+                count2++;
+            }
+        }
+
         vector<int> ans;
-        for(pair<int,int>p:m){
-            if(p.second >n/3) ans.push_back(p.first);
+        int minimal= nums.size()/3 + 1;
+        if(count1>=minimal){
+            ans.push_back(el1);
         }
-        return ans;  
+
+        if(count2>=minimal){
+            ans.push_back(el2);
+        }
+
+        return ans;
+        
     }
 };
